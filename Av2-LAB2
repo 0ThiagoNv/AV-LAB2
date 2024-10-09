@@ -147,7 +147,7 @@ public class teste {
     public static void visualizarVeiculos(Scanner scan) {
         int opcao;
         do {
-            System.out.println("\n--- Veículos Disponíveis ---");
+            System.out.println("--- Veículos Disponíveis ---");
             for (String veiculo : veiculos) {
                 System.out.println(veiculo);
             }
@@ -184,7 +184,7 @@ public class teste {
     public static void visualizarFuncionarios(Scanner scan) {
         int opcao;
         do {
-            System.out.println("\n--- Funcionários ---");
+            System.out.println("--- Funcionários ---");
             for (String funcionario : funcionarios) {
                 System.out.println(funcionario);
             }
