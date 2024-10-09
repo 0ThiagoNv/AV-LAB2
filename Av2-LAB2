@@ -1,0 +1,209 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class teste {
+
+    static List<String> veiculos = new ArrayList<>();
+    static List<String> funcionarios = new ArrayList<>();
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int opcaoLogin;
+
+        while(true) {
+            System.out.println("""
+                    1- Para logar como cliente
+                    2- Para logar como empresa
+                    3- Para sair""");
+
+            opcaoLogin = scan.nextInt();
+            scan.nextLine();
+
+            if(opcaoLogin == 1 || opcaoLogin == 2){
+                acessarLoginCliente(opcaoLogin);
+                acessarLoginEmpresa(opcaoLogin);
+            }
+            else if(opcaoLogin == 3) {
+                System.out.println("Até mais!\uD83D\uDC4B");
+                return;
+            }
+            else{
+                System.out.println("Opção inválida! Tente novamente: ");
+            }
+        }
+    }
+
+    public static void acessarLoginCliente(int opcaoLogin) {
+        Scanner scan = new Scanner(System.in);
+        String login, senha;
+
+        Map<String, String> usuariosEsenhas = dadosClientes();
+
+        if (opcaoLogin == 1) {
+            do {
+                System.out.println("Digite seu usuario: ");
+                login = scan.nextLine();
+            } while (!(usuariosEsenhas.containsKey(login)));
+
+            do {
+                System.out.println("Digite sua senha: ");
+                senha = scan.nextLine();
+                if (!(usuariosEsenhas.get(login).equals(senha))) {
+                    System.out.println("Senha incorreta!");
+                }
+            } while (!(usuariosEsenhas.get(login).equals(senha)));
+
+            System.out.println("Logado com sucesso!");
+        }
+    }
+
+    public static void acessarLoginEmpresa(int opcaoLogin) {
+        Scanner scan = new Scanner(System.in);
+        String login, senha;
+
+        Map<String, String> usuariosEsenhas = dadosEmpresa();
+
+        if (opcaoLogin == 2) {
+            do {
+                System.out.println("Digite seu usuario: ");
+                login = scan.nextLine();
+            } while (!(usuariosEsenhas.containsKey(login)));
+
+            do {
+                System.out.println("Digite sua senha: ");
+                senha = scan.nextLine();
+                if (!(usuariosEsenhas.get(login).equals(senha))) {
+                    System.out.println("Senha incorreta!");
+                }
+            } while (!(usuariosEsenhas.get(login).equals(senha)));
+
+            System.out.println("Logado com sucesso!");
+        }
+        menuEmpresario();
+    }
+
+    public static void menuEmpresario() {
+        Scanner scan = new Scanner(System.in);
+        int opcaoMenuEmpresario;
+
+        System.out.println("""
+                1- Para cadastrar um veículo
+                2- Para visualizar todos os veículos
+                3- Para cadastrar funcionários
+                4- Para visualizar todos os funcionarios
+                5- Para sair""");
+
+        opcaoMenuEmpresario = scan.nextInt();
+        scan.nextLine();
+
+        switch (opcaoMenuEmpresario) {
+            case 1:
+                cadastrarVeiculo(scan);
+                break;
+            case 2:
+                visualizarVeiculos(scan);
+                break;
+            case 3:
+                cadastrarfuncionarios(scan);
+                break;
+            case 4:
+                visualizarFuncionarios(scan);
+                break;
+            case 5:
+                System.out.println("Até mais!\uD83D\uDC4B");
+                break;
+            default:
+                System.out.println("Opção inválida!");
+        }
+    }
+
+    public static void cadastrarVeiculo(Scanner scan) {
+        int opcao;
+            do {
+                System.out.println("Digite o nome do veículo:");
+                String veiculo = scan.nextLine();
+                veiculos.add(veiculo);
+                System.out.println("Veículo cadastrado com sucesso!");
+                do {
+                    System.out.println("""
+                            1- Para cadastrar outro veículo?
+                            2- Para voltar para o menu""");
+                    opcao = scan.nextInt();
+                    scan.nextLine();
+                    if (opcao == 2) {
+                        menuEmpresario();
+                        return;
+                    } else if (opcao != 1) {
+                        System.out.println("Opção inválida, tente novamente: ");
+                    }
+                }while(opcao != 1);
+            } while (true);
+    }
+
+    public static void visualizarVeiculos(Scanner scan) {
+        int opcao;
+        do {
+            System.out.println("\n--- Veículos Disponíveis ---");
+            for (String veiculo : veiculos) {
+                System.out.println(veiculo);
+            }
+            System.out.println("1- Voltar para o menu");
+            opcao = scan.nextInt();
+            scan.nextLine();
+        }while(opcao != 1);
+        menuEmpresario();
+    }
+
+    public static void cadastrarfuncionarios(Scanner scan) {
+        int opcao;
+        do {
+            System.out.println("Digite o nome do funcionário:");
+            String funcionario = scan.nextLine();
+            funcionarios.add(funcionario);
+            System.out.println("Funcionário cadastrado com sucesso!");
+            do {
+                System.out.println("""
+                        1- Para cadastrar outro funcionário
+                        2- Para voltar para o menu""");
+                opcao = scan.nextInt();
+                scan.nextLine();
+                if (opcao == 2) {
+                    menuEmpresario();
+                    return;
+                } else if (opcao != 1) {
+                    System.out.println("Opção inválida, tente novamente: ");
+                }
+            }while(opcao != 1);
+        }while(true);
+    }
+
+    public static void visualizarFuncionarios(Scanner scan) {
+        int opcao;
+        do {
+            System.out.println("\n--- Funcionários ---");
+            for (String funcionario : funcionarios) {
+                System.out.println(funcionario);
+            }
+            System.out.println("1- Voltar para o menu");
+            opcao = scan.nextInt();
+            scan.nextLine();
+        }while(opcao != 1);
+        menuEmpresario();
+    }
+
+    public static Map<String, String> dadosClientes() {
+        Map<String, String> usuariosEsenhas = new HashMap<>();
+        usuariosEsenhas.put("Thiago", "1234");
+        return usuariosEsenhas;
+    }
+
+    public static Map<String, String> dadosEmpresa() {
+        Map<String, String> usuariosEsenhas = new HashMap<>();
+        usuariosEsenhas.put("Pastor", "1234");
+        return usuariosEsenhas;
+    }
+}
