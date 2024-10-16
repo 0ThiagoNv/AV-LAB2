@@ -1,0 +1,27 @@
+import java.util.List;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class ListaNumeros {
+    static Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Quantos numeros deseja digitar?");
+        int quantidade = scan.nextInt();
+
+        List<Integer> numeros = obterNumeros(quantidade);
+        int total = numeros.stream().mapToInt(Integer::intValue).sum();
+
+        System.out.println("Lista de numeros digitados: " + numeros);
+        System.out.println("Soma total: " + total);
+    }
+
+    public static List<Integer> obterNumeros(int quantidade) {
+        List<Integer> numeros = new ArrayList<>();
+        for (int i = 0; i < quantidade; i++) {
+            System.out.println("Digite o " + (i + 1) + " numero:");
+            numeros.add(scan.nextInt());
+        }
+        return numeros;
+    }
+}
