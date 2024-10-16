@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class calculadora {
+    public static void main(String[] args){
+
+        Scanner scan = new Scanner(System.in);
+
+        double numero1, numero2;
+        int opcao;
+
+        System.out.println("Digite um numero: ");
+        numero1 = scan.nextDouble();
+        System.out.println("Digite outro numero:");
+        numero2 = scan.nextDouble();
+
+        do{
+            System.out.println("Digite uma opção:");
+            System.out.println("""
+                    1- Para Somar
+                    2- Para Subtrair
+                    3- Para Dividir
+                    4- Para Multiplicar""");
+
+            opcao = scan.nextInt();
+
+        }while(opcao < 1 || opcao > 4);
+
+        somar(numero1, numero2, opcao);
+        subtracao(numero1, numero2, opcao);
+        dividir(numero1, numero2, opcao);
+        multiplicar(numero1, numero2, opcao);
+    }
+
+    public static void somar(double numero1, double numero2, int opcao){
+        if(opcao == 1){
+            System.out.println("A soma dos numeros é: "+ (numero1 + numero2));
+        }
+    }
+    public static void subtracao(double numero1, double numero2, int opcao){
+        if(opcao == 2){
+            System.out.println("A subtração dos numeros é: "+ (numero1 - numero2));
+        }
+    }
+    public static void dividir(double numero1, double numero2, int opcao){
+        if(opcao == 3){
+            System.out.println("A divisão dos numeros é: "+ (numero1 / numero2));
+        }
+    }
+    public static void multiplicar(double numero1, double numero2, int opcao){
+        if(opcao == 4) {
+            System.out.println("A multiplicação dos numeros é: " + (numero1 * numero2));
+        }
+    }
+}
