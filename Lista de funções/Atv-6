@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Vogais {
+    static Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Digite uma frase: ");
+        String frase = scan.nextLine();
+
+        int contadorVogais = contarVogais(frase);
+        System.out.println("Número de vogais: " + contadorVogais);
+    }
+
+    public static int contarVogais(String frase) {
+        String vogais = "aeiouAEIOU";
+        int contador = 0;
+
+        for (char letra : frase.toCharArray()) {
+            if (vogais.contains(String.valueOf(letra))) {
+                contador++;
+            }
+        }
+
+        return contador;
+    }
+}
