@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Fatorial {
+    Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Digite um numero inteiro: ");
+        int numero = scan.nextInt();
+
+        while (numero <= 0) {
+            System.out.println("O numero invalido, digite novamente:");
+            numero = scan.nextInt();
+        }
+
+        int valorFinal = calcular(numero);
+        System.out.println("Fatorial: " + valorFinal);
+    }
+
+    public static int calcular(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        return n * calcular(n - 1);
+    }
+}
