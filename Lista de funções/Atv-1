@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class verificar {
+    public static void main(String[] args){
+
+        Scanner scan = new Scanner(System.in);
+
+        int numero;
+
+        System.out.println("Digite um numero: ");
+        numero = scan.nextInt();
+
+        char resultado = verificarNumero(numero);
+
+        System.out.println("Resultado: " + resultado);
+    }
+    public static char verificarNumero(int numero) {
+        if (numero > 0) {
+            return 'P';
+        }
+        else{
+            return 'N';
+        }
+    }
+}
