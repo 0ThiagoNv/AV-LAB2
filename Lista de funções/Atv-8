@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class NumeroPrimo {
+    static Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Digite um número inteiro: ");
+        int numero = scan.nextInt();
+
+        verificarNumero(numero);
+    }
+
+    public static void verificarNumero(int numero) {
+        if (numero == 2 || numero == 3 || numero == 5 || numero == 7 || Primo(numero)) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    public static boolean Primo(int numero) {
+        if (numero <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) return false;
+        }
+        return true;
+    }
+}
