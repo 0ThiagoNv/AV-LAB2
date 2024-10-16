@@ -1,0 +1,61 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+
+public class login {
+    public static void main(String[] args){
+
+        Scanner scan = new Scanner(System.in);
+
+        int opcao;
+
+        do{
+            System.out.println("""
+                    Digite uma opção:
+                    1 - Para entrar
+                    2 - Para sair
+                    """);
+
+            opcao = scan.nextInt();
+            if(opcao == 2){
+                System.out.println("Até mais!\uD83D\uDC4B");
+                return;
+            }
+
+        }while(opcao != 1);
+
+        acessarLogin(opcao);
+    }
+    public static void acessarLogin(int opcao){
+        Scanner scan = new Scanner(System.in);
+        String login, senha;
+
+        Map<String, String> usuariosEsenhas = dados();
+
+        do {
+            System.out.println("Digite seu usuario: ");
+            login = scan.nextLine();
+        }while(!(usuariosEsenhas.containsKey(login)));
+
+        do {
+            System.out.println("Digite sua senha: ");
+            senha = scan.nextLine();
+            if(!(usuariosEsenhas.get(login).equals(senha))){
+                System.out.println("Senha incorreta!");
+            }
+        }while(!(usuariosEsenhas.get(login).equals(senha)));
+
+        System.out.println("Logado com sucesso!");
+    }
+    public static Map<String, String> dados(){
+        Map<String, String> usuariosEsenhas = new HashMap<>();
+
+        usuariosEsenhas.put("teste", "admin");
+        usuariosEsenhas.put("teste2", "admin2");
+        usuariosEsenhas.put("teste3", "admin3");
+        usuariosEsenhas.put("teste4", "admin4");
+
+        return usuariosEsenhas;
+
+    }
+}
