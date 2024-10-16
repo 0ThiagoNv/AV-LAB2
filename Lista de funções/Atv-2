@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class contador {
+    public static void main(String[] args){
+
+        Scanner scan = new Scanner(System.in);
+
+        int numero, quantidade;
+
+        System.out.println("Digite um numero: ");
+        numero = scan.nextInt();
+
+        quantidade = contadorDigitos(numero);
+
+        System.out.println("O número " + numero + " tem " + quantidade + " dígitos.");
+
+    }
+    public static int contadorDigitos(int numero){
+        String numeroString;
+
+        numeroString = Integer.toString(numero);
+
+        return numeroString.length();
+    }
+}
