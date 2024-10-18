@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class NumPalavras {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Digite uma frase: ");
+        String frase = scan.nextLine();
+
+        int totalPalavras = contarPalavras(frase);
+
+        System.out.println(totalPalavras + " palavras");
+    }
+
+    public static int contarPalavras(String frase) {
+        return frase.split(" ").length;
+    }
+}
